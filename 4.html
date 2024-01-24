@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Light</title>
+  <style>
+    #trafficLight {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .light {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      border-radius: 50%;
+      background-color: grey; 
+    }
+  </style>
+</head>
+<body>
+
+<div id="trafficLight">
+  <div id="red" class="light"></div>
+  <div id="yellow" class="light"></div>
+  <div id="green" class="light"></div>
+</div>
+
+<button onclick="changeLight()">Change Light</button>
+
+<script>
+  let currentLight = 0; // 0 - Red, 1 - Yellow, 2 - Green
+
+  function changeLight() {
+    const lights = document.querySelectorAll('.light');
+
+    // Вимикаємо всі світлові елементи
+    lights.forEach(light => {
+      light.style.backgroundColor = 'grey'; // Спочатку усі світлофори серого кольору
+    });
+
+    // Змінюємо світлофор на наступний колір
+    currentLight = (currentLight + 1) % 3;
+
+    // Вмикаємо світловий елемент, що відповідає поточному коліру
+    lights[currentLight].style.backgroundColor = getLightColor(currentLight);
+  }
+
+  function getLightColor(index) {
+    switch (index) {
+      case 0: return 'red';
+      case 1: return 'yellow';
+      case 2: return 'green';
+      default: return 'grey'; // Спочатку усі світлофори серого кольору
+    }
+  }
+</script>
+
+</body>
+</html>

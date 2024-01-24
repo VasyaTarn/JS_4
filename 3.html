@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Field</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #footballField {
+      width: 100vw;
+      height: 100vh;
+      background-color: #4CAF50;
+      position: relative;
+    }
+
+    #football {
+      width: 100px;
+      height: 100px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div id="footballField" onclick="moveBall(event)">
+  <div id="football"></div>
+</div>
+
+<script>
+  function moveBall(event) {
+    const football = document.getElementById('football');
+    const footballField = document.getElementById('footballField');
+
+    const clickX = event.clientX;
+    const clickY = event.clientY;
+
+    const maxX = footballField.clientWidth - football.clientWidth;
+    const maxY = footballField.clientHeight - football.clientHeight;
+
+    let ballX = clickX - football.clientWidth / 2;
+    let ballY = clickY - football.clientHeight / 2;
+
+    ballX = Math.max(0, Math.min(maxX, ballX));
+    ballY = Math.max(0, Math.min(maxY, ballY));
+
+    football.style.transform = `translate(${ballX}px, ${ballY}px)`;
+  }
+</script>
+
+</body>
+</html>

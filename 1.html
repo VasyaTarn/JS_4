@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1</title>
+</head>
+<body>
+
+<label for="userName">Enter your name:</label>
+<input type="text" id="userName" oninput="filterInput(event)" />
+
+<script>
+  function filterInput(event) {
+    const inputElement = event.target;
+    const inputValue = inputElement.value;
+    
+    const filteredValue = inputValue.replace(/\d/g, ''); 
+
+    inputElement.value = filteredValue;
+  }
+</script>
+
+</body>
+</html>
